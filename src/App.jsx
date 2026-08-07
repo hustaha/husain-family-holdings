@@ -292,12 +292,13 @@ export default function App() {
             </article>
 
             <article className="principal">
-              <div className="principal__photo" aria-label="Photo placeholder for Co-Principal">
+              <div className="principal__photo" aria-label="Photo placeholder for Taha Husain">
                 <span>Photo</span>
-                <span className="principal__photo-hint">Technology Executive</span>
+                <span className="principal__photo-hint">Taha Husain</span>
               </div>
               <p className="principal__role">Co-Principal</p>
-              <h3 className="principal__name">Technology Executive</h3>
+              <h3 className="principal__name">Taha Husain</h3>
+              <p className="principal__title">Technology Executive</p>
               <p className="principal__bio">
                 An enterprise technology executive focused on customer outcomes, complex commercial
                 strategy, and long-term partnership. Leads outreach, diligence framing, and deal
