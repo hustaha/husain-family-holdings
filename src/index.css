@@ -558,6 +558,13 @@ button {
   gap: 0.85rem;
 }
 
+.contact__soon {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
 .contact__email {
   font-family: var(--font-display);
   font-size: 1.5rem;

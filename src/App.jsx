@@ -315,17 +315,21 @@ export default function App() {
             <h2 className="section__title">Tell us about your business or property.</h2>
             <p className="contact__note">
               If you are an owner considering a sale — or an advisor with an off-market opportunity —
-              we would welcome a discreet conversation.
+              we would welcome a discreet conversation. Booking via Calendly coming soon.
             </p>
           </div>
 
           <div className="contact__actions">
-            <a className="contact__email" href="mailto:hustaha@gmail.com">
-              hustaha@gmail.com
+            {/* Replace href with your Calendly link when ready */}
+            <a
+              className="btn btn--green"
+              href="#contact"
+              aria-disabled="true"
+              onClick={(e) => e.preventDefault()}
+            >
+              Schedule on Calendly
             </a>
-            <a className="btn btn--green" href="mailto:hustaha@gmail.com?subject=Husain%20Family%20Holdings%20%E2%80%94%20Acquisition%20Inquiry">
-              Email the family office
-            </a>
+            <p className="contact__soon">Calendly link will go here</p>
           </div>
         </div>
       </section>
