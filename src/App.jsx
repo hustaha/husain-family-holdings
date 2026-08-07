@@ -1,3 +1,5 @@
+import FamilyCrest from './components/FamilyCrest'
+
 const HERO_IMAGE =
   'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=80'
 
@@ -42,6 +44,20 @@ const APPROACH = [
   },
 ]
 
+const DEAL_ROWS = [
+  { label: 'Business', value: 'Neighborhood laundromat (illustrative)' },
+  { label: 'Agreed purchase price', value: '$400,000' },
+  { label: 'Cash due at closing', value: '$0' },
+  { label: 'Buyer cash upfront', value: 'Zero dollars' },
+  { label: 'Seller payment type', value: 'Royalty on gross revenue' },
+  { label: 'Royalty rate', value: '10% of monthly gross sales' },
+  { label: 'Assumed monthly gross', value: '$40,000' },
+  { label: 'Est. monthly payback to seller', value: '$4,000' },
+  { label: 'Payback period to $400k', value: '~100 months (about 8.3 years)' },
+  { label: 'Hard stop / term cap', value: '120 months (10 years) max' },
+  { label: 'Early payoff', value: 'Allowed anytime at remaining balance' },
+]
+
 export default function App() {
   return (
     <div className="site">
@@ -59,9 +75,13 @@ export default function App() {
 
         <div className="hero__inner">
           <nav className="nav" aria-label="Primary">
-            <div className="nav__brand">Husain Family Holdings</div>
+            <div className="nav__brand">
+              <FamilyCrest className="nav__crest" size={42} />
+              <span>Husain Family Holdings</span>
+            </div>
             <div className="nav__links">
               <a href="#approach">Approach</a>
+              <a href="#example">Financing</a>
               <a href="#interests">Interests</a>
               <a href="#principals">Principals</a>
               <a href="#contact">Contact</a>
@@ -69,19 +89,23 @@ export default function App() {
           </nav>
 
           <div className="hero__copy">
+            <div className="hero__crest-wrap">
+              <FamilyCrest className="hero__crest" size={112} />
+            </div>
             <p className="hero__brand">Husain Family Holdings</p>
             <h1 className="hero__headline">
               Acquiring small businesses and multifamily through seller financing.
             </h1>
             <p className="hero__support">
-              A family partnership seeking owner-operators ready for a thoughtful next chapter.
+              A family partnership with roots in Burhanpur and Ahmedabad — seeking owner-operators
+              ready for a thoughtful next chapter.
             </p>
             <div className="hero__cta">
               <a className="btn btn--gold" href="#contact">
                 Start a conversation
               </a>
-              <a className="btn btn--outline" href="#interests">
-                See what we buy
+              <a className="btn btn--outline" href="#example">
+                See a $0-down example
               </a>
             </div>
           </div>
@@ -109,6 +133,63 @@ export default function App() {
         </div>
       </section>
 
+      <section className="section section--deal" id="example">
+        <div className="section__inner">
+          <p className="section__eyebrow">Seller financing example</p>
+          <h2 className="section__title">What $0 upfront can look like.</h2>
+          <p className="section__lead">
+            Illustrative only — real terms are tailored to the business, cash flow, and the seller’s goals.
+            The point is simple: we can close with no cash down and pay you back from operations.
+          </p>
+
+          <div className="deal">
+            <div className="deal__intro">
+              <FamilyCrest size={88} />
+              <div>
+                <h3 className="deal__name">Royalty payback structure</h3>
+                <p>
+                  Instead of a large check at closing, the seller receives an ongoing share of revenue
+                  until the purchase price is repaid — or until a maximum term is reached.
+                </p>
+              </div>
+            </div>
+
+            <dl className="deal__table">
+              {DEAL_ROWS.map((row) => (
+                <div className="deal__row" key={row.label}>
+                  <dt>{row.label}</dt>
+                  <dd>{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="deal__math">
+              <div>
+                <span className="deal__math-label">Year-one seller receipts</span>
+                <strong>~$48,000</strong>
+                <span className="deal__math-note">$4,000 × 12 months</span>
+              </div>
+              <div>
+                <span className="deal__math-label">Full principal path</span>
+                <strong>~$400,000</strong>
+                <span className="deal__math-note">via royalties over ~8.3 years</span>
+              </div>
+              <div>
+                <span className="deal__math-label">Buyer cash at close</span>
+                <strong>$0</strong>
+                <span className="deal__math-note">zero-dollar upfront example</span>
+              </div>
+            </div>
+
+            <p className="deal__disclaimer">
+              Example assumptions for clarity. We also consider fixed monthly notes, step-down royalties,
+              interest add-ons, balloon balances, and consulting transitions — whatever fits a fair deal
+              for both sides.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="section section--green" id="interests">
         <div className="section__inner">
           <p className="section__eyebrow">Areas of interest</p>
@@ -130,11 +211,17 @@ export default function App() {
 
       <section className="section section--mist" id="principals">
         <div className="section__inner">
-          <p className="section__eyebrow">Leadership</p>
-          <h2 className="section__title">The principals.</h2>
-          <p className="section__lead">
-            Two siblings bringing clinical discipline and commercial deal sense to every acquisition.
-          </p>
+          <div className="principals-head">
+            <FamilyCrest size={72} />
+            <div>
+              <p className="section__eyebrow">Leadership</p>
+              <h2 className="section__title">The principals.</h2>
+              <p className="section__lead" style={{ marginBottom: 0 }}>
+                Two siblings bringing clinical discipline and commercial deal sense — with family roots
+                in Burhanpur and Ahmedabad, India.
+              </p>
+            </div>
+          </div>
 
           <div className="principals">
             <article className="principal">
@@ -183,7 +270,10 @@ export default function App() {
       </section>
 
       <footer className="footer">
-        <strong>Husain Family Holdings</strong>
+        <div className="footer__brand">
+          <FamilyCrest size={36} />
+          <strong>Husain Family Holdings</strong>
+        </div>
         <span>Small business &amp; multifamily acquisitions via seller financing.</span>
       </footer>
     </div>
