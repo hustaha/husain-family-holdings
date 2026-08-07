@@ -294,14 +294,14 @@ export default function App() {
             <article className="principal">
               <div className="principal__photo" aria-label="Photo placeholder for Co-Principal">
                 <span>Photo</span>
-                <span className="principal__photo-hint">Co-Principal</span>
+                <span className="principal__photo-hint">Technology Executive</span>
               </div>
               <p className="principal__role">Co-Principal</p>
-              <h3 className="principal__name">Account Technology Strategist</h3>
+              <h3 className="principal__name">Technology Executive</h3>
               <p className="principal__bio">
-                Partners with enterprise customers on technology strategy and complex commercial outcomes.
-                Leads outreach, diligence framing, and deal structuring — turning owner goals into clear,
-                seller-financed paths to close.
+                An enterprise technology executive focused on customer outcomes, complex commercial
+                strategy, and long-term partnership. Leads outreach, diligence framing, and deal
+                structuring — turning owner goals into clear, seller-financed paths to close.
               </p>
             </article>
           </div>
