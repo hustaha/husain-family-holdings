@@ -44,7 +44,7 @@ const APPROACH = [
   },
 ]
 
-const DEAL_ROWS = [
+const ZERO_DOWN_ROWS = [
   { label: 'Business', value: 'Neighborhood laundromat (illustrative)' },
   { label: 'Agreed purchase price', value: '$400,000' },
   { label: 'Cash due at closing', value: '$0' },
@@ -57,6 +57,33 @@ const DEAL_ROWS = [
   { label: 'Hard stop / term cap', value: '120 months (10 years) max' },
   { label: 'Early payoff', value: 'Allowed anytime at remaining balance' },
 ]
+
+const TEN_PERCENT_ROWS = [
+  { label: 'Asset', value: '8-unit multifamily property (illustrative)' },
+  { label: 'Agreed purchase price', value: '$1,200,000' },
+  { label: 'Buyer cash at closing', value: '$120,000 (10% down)' },
+  { label: 'Seller-financed balance', value: '$1,080,000' },
+  { label: 'Note structure', value: 'Fixed monthly principal & interest' },
+  { label: 'Interest rate', value: '6.5% amortized' },
+  { label: 'Term', value: '7 years (84 months)' },
+  { label: 'Est. monthly payment to seller', value: '~$16,050' },
+  { label: 'Balloon at maturity', value: 'Remaining balance due or refinance' },
+  { label: 'Assumed monthly NOI support', value: '~$9,500–$11,000 rent roll cushion via ops plan' },
+  { label: 'Why this shape', value: 'Seller gets cash now + strong monthly income; buyer preserves liquidity' },
+]
+
+function DealTable({ rows }) {
+  return (
+    <dl className="deal__table">
+      {rows.map((row) => (
+        <div className="deal__row" key={row.label}>
+          <dt>{row.label}</dt>
+          <dd>{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
 
 export default function App() {
   return (
@@ -97,15 +124,14 @@ export default function App() {
               Acquiring small businesses and multifamily through seller financing.
             </h1>
             <p className="hero__support">
-              A family partnership with roots in Burhanpur and Ahmedabad — seeking owner-operators
-              ready for a thoughtful next chapter.
+              A family partnership seeking owner-operators ready for a thoughtful next chapter.
             </p>
             <div className="hero__cta">
               <a className="btn btn--gold" href="#contact">
                 Start a conversation
               </a>
               <a className="btn btn--outline" href="#example">
-                See a $0-down example
+                See financing examples
               </a>
             </div>
           </div>
@@ -135,18 +161,19 @@ export default function App() {
 
       <section className="section section--deal" id="example">
         <div className="section__inner">
-          <p className="section__eyebrow">Seller financing example</p>
-          <h2 className="section__title">What $0 upfront can look like.</h2>
+          <p className="section__eyebrow">Seller financing examples</p>
+          <h2 className="section__title">How a deal can be structured.</h2>
           <p className="section__lead">
-            Illustrative only — real terms are tailored to the business, cash flow, and the seller’s goals.
-            The point is simple: we can close with no cash down and pay you back from operations.
+            Illustrative only — real terms are tailored to the asset, cash flow, and the seller’s goals.
+            Below are two common shapes: zero cash at close, and a modest down payment with a seller note.
           </p>
 
           <div className="deal">
             <div className="deal__intro">
               <FamilyCrest size={88} />
               <div>
-                <h3 className="deal__name">Royalty payback structure</h3>
+                <p className="deal__eyebrow">Example A</p>
+                <h3 className="deal__name">$0 down — royalty payback</h3>
                 <p>
                   Instead of a large check at closing, the seller receives an ongoing share of revenue
                   until the purchase price is repaid — or until a maximum term is reached.
@@ -154,14 +181,7 @@ export default function App() {
               </div>
             </div>
 
-            <dl className="deal__table">
-              {DEAL_ROWS.map((row) => (
-                <div className="deal__row" key={row.label}>
-                  <dt>{row.label}</dt>
-                  <dd>{row.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <DealTable rows={ZERO_DOWN_ROWS} />
 
             <div className="deal__math">
               <div>
@@ -180,11 +200,45 @@ export default function App() {
                 <span className="deal__math-note">zero-dollar upfront example</span>
               </div>
             </div>
+          </div>
+
+          <div className="deal deal--second">
+            <div className="deal__intro">
+              <div className="deal__badge" aria-hidden="true">10%</div>
+              <div>
+                <p className="deal__eyebrow">Example B</p>
+                <h3 className="deal__name">10% down — multifamily seller note</h3>
+                <p>
+                  A small cash down payment at closing, with the balance carried by the seller as a
+                  fixed monthly note — useful when an owner wants liquidity now and reliable income after.
+                </p>
+              </div>
+            </div>
+
+            <DealTable rows={TEN_PERCENT_ROWS} />
+
+            <div className="deal__math">
+              <div>
+                <span className="deal__math-label">Cash to seller at close</span>
+                <strong>$120,000</strong>
+                <span className="deal__math-note">10% of $1.2M purchase price</span>
+              </div>
+              <div>
+                <span className="deal__math-label">Financed by seller</span>
+                <strong>$1.08M</strong>
+                <span className="deal__math-note">6.5% · 7-year term</span>
+              </div>
+              <div>
+                <span className="deal__math-label">Est. monthly to seller</span>
+                <strong>~$16,050</strong>
+                <span className="deal__math-note">principal &amp; interest on the note</span>
+              </div>
+            </div>
 
             <p className="deal__disclaimer">
-              Example assumptions for clarity. We also consider fixed monthly notes, step-down royalties,
-              interest add-ons, balloon balances, and consulting transitions — whatever fits a fair deal
-              for both sides.
+              Example assumptions for clarity. We also consider royalties, step-down payments,
+              interest-only periods, balloon balances, and consulting transitions — whatever fits a fair
+              deal for both sides.
             </p>
           </div>
         </div>
@@ -217,16 +271,19 @@ export default function App() {
               <p className="section__eyebrow">Leadership</p>
               <h2 className="section__title">The principals.</h2>
               <p className="section__lead" style={{ marginBottom: 0 }}>
-                Two siblings bringing clinical discipline and commercial deal sense — with family roots
-                in Burhanpur and Ahmedabad, India.
+                Two siblings bringing clinical discipline and enterprise technology judgment to every acquisition.
               </p>
             </div>
           </div>
 
           <div className="principals">
             <article className="principal">
+              <div className="principal__photo" aria-label="Photo placeholder for Dr. Sanaa Husain">
+                <span>Photo</span>
+                <span className="principal__photo-hint">Dr. Sanaa Husain</span>
+              </div>
               <p className="principal__role">Co-Principal</p>
-              <h3 className="principal__name">Dr. Husain</h3>
+              <h3 className="principal__name">Dr. Sanaa Husain</h3>
               <p className="principal__title">Anesthesiologist</p>
               <p className="principal__bio">
                 Brings rigorous judgment, risk awareness, and a steady operating mindset shaped by
@@ -235,12 +292,16 @@ export default function App() {
             </article>
 
             <article className="principal">
+              <div className="principal__photo" aria-label="Photo placeholder for Co-Principal">
+                <span>Photo</span>
+                <span className="principal__photo-hint">Co-Principal</span>
+              </div>
               <p className="principal__role">Co-Principal</p>
-              <h3 className="principal__name">Taha Husain</h3>
-              <p className="principal__title">Tech Sales Executive</p>
+              <h3 className="principal__name">Account Technology Strategist</h3>
               <p className="principal__bio">
-                Leads outreach and deal structuring with a background in technology sales —
-                translating owner goals into clear, seller-financed paths to close.
+                Partners with enterprise customers on technology strategy and complex commercial outcomes.
+                Leads outreach, diligence framing, and deal structuring — turning owner goals into clear,
+                seller-financed paths to close.
               </p>
             </article>
           </div>
